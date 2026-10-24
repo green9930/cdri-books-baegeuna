@@ -1,3 +1,3 @@
-export function HomePage() {
+export const HomePage = () => {
   return <main className="p-6 text-xl font-bold">도서 검색</main>;
-}
+};
