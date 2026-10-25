@@ -19,3 +19,6 @@ export const SEARCH_TARGET_OPTIONS: TSearchTargetOption[] = [
 ];
 
 export const NO_RESULTS_MESSAGE = "검색된 결과가 없습니다.";
+export const END_OF_RESULTS_MESSAGE = "결과를 모두 불러왔습니다.";
+export const MAX_RESULTS_MESSAGE =
+  "검색 결과는 최대 500건까지 확인할 수 있습니다.";
