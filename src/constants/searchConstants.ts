@@ -6,8 +6,16 @@ export const SEARCH_INPUT_MIN_LENGTH = 1;
 export const SEARCH_INPUT_MAX_LENGTH = 100;
 export const MAX_SEARCH_HISTORY = 8;
 
+export const SEARCH_TARGET_OPTION_VALS = {
+  title: "title",
+  person: "person",
+  publisher: "publisher",
+} as const;
+
 export const SEARCH_TARGET_OPTIONS: TSearchTargetOption[] = [
-  { value: "title", label: "제목" },
-  { value: "person", label: "저자" },
-  { value: "publisher", label: "출판사" },
+  { value: SEARCH_TARGET_OPTION_VALS.title, label: "제목" },
+  { value: SEARCH_TARGET_OPTION_VALS.person, label: "저자명" },
+  { value: SEARCH_TARGET_OPTION_VALS.publisher, label: "출판사" },
 ];
+
+export const NO_RESULTS_MESSAGE = "검색된 결과가 없습니다.";

@@ -49,6 +49,11 @@
   --text-caption--font-weight: 500;
   --text-caption--letter-spacing: 0;
 
+  --text-caption-medium: 0.875rem;
+  --text-caption-medium--line-height: 1.5rem;
+  --text-caption-medium--font-weight: 500;
+  --text-caption-medium--letter-spacing: 0;
+
   --text-small: 0.625rem;
   --text-small--line-height: 0.625rem;
   --text-small--font-weight: 500;
@@ -58,10 +63,16 @@
   --container-content: 62.5rem; /* page-content 960 + padding-x 20 */
 
   --spacing-nav: 5rem; /* 80px */
+
+  --shadow-dropdown: 0px 0px 4px 0px #00000040;
 }
 
 @layer base {
   body {
     background-color: var(--color-white);
+  }
+
+  input {
+    outline: none;
   }
 }

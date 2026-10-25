@@ -1,4 +1,6 @@
-export type TSearchTarget = "title" | "person" | "publisher";
+import type { SEARCH_TARGET_OPTION_VALS } from "@/constants/searchConstants";
+
+export type TSearchTarget = keyof typeof SEARCH_TARGET_OPTION_VALS;
 
 export type TSearchTargetOption = { value: TSearchTarget; label: string };
 

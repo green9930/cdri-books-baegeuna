@@ -1,6 +1,5 @@
 import { NavLink } from "react-router";
 
-import { cn } from "@/utils/cn";
 import { NAV_MENUS, PATH_LIST, SERVICE_NAME } from "@/constants/navConstants";
 
 /* 화면 top 고정. bottom line은 화면 끝까지, content 영역은 max-w-layout
@@ -21,10 +20,9 @@ export const Navigation = () => {
                   to={path}
                   end={path === PATH_LIST.search}
                   className={({ isActive }) =>
-                    cn(
-                      "flex items-center border-b border-transparent bg-white p-2 text-body1 whitespace-nowrap text-textPrimary md:text-body1",
-                      isActive && "border-primary",
-                    )
+                    `flex items-center border-b bg-white p-2 text-body1 whitespace-nowrap text-textPrimary md:text-body1 ${
+                      isActive ? "border-primary" : "border-transparent"
+                    }`
                   }
                 >
                   {label}
