@@ -15,3 +15,6 @@ export const BTN_COLOR_VAR = {
   subtitleOutline: "border border-textSubtitle bg-white text-textSubtitle",
   disabled: "bg-textSubtitle text-white",
 } as const;
+
+export const CHEVRON_TRANSITION =
+  "transition-transform duration-500 ease-in-out";
