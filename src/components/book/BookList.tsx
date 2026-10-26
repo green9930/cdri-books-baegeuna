@@ -10,6 +10,7 @@ interface BookListProps {
   isFetchingNextPage: boolean;
   handleNextPage: () => void;
   endMessage: string;
+  isNextPagePaused?: boolean; // 에러 모달 노출 중 다음 페이지 요청 반복 방지
 }
 
 export const BookList = ({
@@ -18,9 +19,10 @@ export const BookList = ({
   isFetchingNextPage,
   handleNextPage,
   endMessage,
+  isNextPagePaused = false,
 }: BookListProps) => {
   const targetRef = useInfiniteScroll({
-    enabled: hasNextPage && !isFetchingNextPage,
+    enabled: hasNextPage && !isFetchingNextPage && !isNextPagePaused,
     handleIntersect: handleNextPage,
   });
 

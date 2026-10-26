@@ -2,6 +2,7 @@ import { BookList } from "@/components/book/BookList";
 import { EmptyState } from "@/components/elements/EmptyState";
 import { Spinner } from "@/components/elements/Spinner";
 import { useBookSearch } from "@/hooks/useBookSearch";
+import { useErrorModalStore } from "@/state/store/errorModalStore";
 import {
   END_OF_RESULTS_MESSAGE,
   MAX_PAGE,
@@ -16,6 +17,9 @@ interface BookSearchResultProps {
 export const BookSearchResult = ({ params }: BookSearchResultProps) => {
   const { data, isPending, hasNextPage, isFetchingNextPage, fetchNextPage } =
     useBookSearch(params);
+  const isErrorModalOpen = useErrorModalStore(
+    (state) => state.errorStatus !== null,
+  );
 
   if (params && isPending) {
     return (
@@ -46,6 +50,7 @@ export const BookSearchResult = ({ params }: BookSearchResultProps) => {
           hasNextPage={hasNextPage}
           isFetchingNextPage={isFetchingNextPage}
           handleNextPage={fetchNextPage}
+          isNextPagePaused={isErrorModalOpen}
           endMessage={
             isMaxReached ? MAX_RESULTS_MESSAGE : END_OF_RESULTS_MESSAGE
           }

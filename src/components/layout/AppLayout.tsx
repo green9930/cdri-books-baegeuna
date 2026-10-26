@@ -1,5 +1,6 @@
 import { Outlet, ScrollRestoration, useLocation } from "react-router";
 
+import { CommonErrorModal } from "@/components/elements/CommonErrorModal";
 import { Navigation } from "@/components/layout/Navigation";
 
 export const AppLayout = () => {
@@ -12,6 +13,7 @@ export const AppLayout = () => {
         <Outlet key={location.key} />
       </main>
       <ScrollRestoration />
+      <CommonErrorModal />
     </>
   );
 };

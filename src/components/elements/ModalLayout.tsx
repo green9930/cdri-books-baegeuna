@@ -53,7 +53,7 @@ export const ModalLayout = ({
       <div
         role="dialog"
         aria-modal="true"
-        className="relative flex max-h-[80dvh] min-h-80 w-[min(30rem,calc(100vw-40px))] flex-col items-center gap-8 overflow-y-auto rounded-lg bg-white p-8 shadow-md"
+        className="relative flex max-h-[80dvh] min-h-70 w-[min(30rem,calc(100vw-40px))] flex-col items-center gap-8 overflow-y-auto rounded-lg bg-white p-8 shadow-md"
       >
         <h2 className="w-full text-center text-title3 text-black">{title}</h2>
         <div className="flex h-full w-full flex-1 flex-col justify-between gap-8">
