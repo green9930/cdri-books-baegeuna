@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { IconChevron } from "@/assets";
 
 import { BookDetail } from "@/components/book/BookDetail";
@@ -20,7 +20,7 @@ interface BookItemProps {
 
 const EXPAND_TRANSITION = "transition-[height] duration-500 ease-in-out";
 
-export const BookItem = ({ book }: BookItemProps) => {
+const BookItemComponent = ({ book }: BookItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [heights, setHeights] = useState({ summary: 0, detail: 0 });
 
@@ -126,3 +126,7 @@ export const BookItem = ({ book }: BookItemProps) => {
     </li>
   );
 };
+
+/* book 참조가 같으면 리렌더 생략 → 다음 페이지 추가·찜 해제 시 기존 항목 리렌더 방지
+ * - props에 인라인 함수·객체를 추가하면 매번 새 참조가 되어 memo 효과 없음 */
+export const BookItem = memo(BookItemComponent);
