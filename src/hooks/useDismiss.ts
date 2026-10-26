@@ -6,7 +6,7 @@ interface UseDismissProps {
   handleDismiss: () => void;
 }
 
-/* Esc or targetRef 외곽 마우스 클릭 시 handleDismis 실행 */
+/* Esc or targetRef 외곽 마우스 클릭 시 handleDismiss 실행 */
 export const useDismiss = ({
   enabled,
   targetRef,

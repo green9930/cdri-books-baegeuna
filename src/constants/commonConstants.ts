@@ -7,10 +7,13 @@ export const QUERY_STALE_TIME = 5 * 60 * 1000; // caching - 5min
 export const BTN_TEXTS = {
   purchase: "구매하기",
   detail: "상세보기",
+  detailSearch: "상세검색",
+  search: "검색하기",
 };
 
 export const PLACEHOLDER_TEXTS = {
   searchBar: "검색어를 입력하세요",
+  detailSearch: "검색어 입력",
 };
 
 export const SUBTEXTS = {

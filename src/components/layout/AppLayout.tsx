@@ -8,7 +8,7 @@ export const AppLayout = () => {
   return (
     <>
       <Navigation />
-      <main className="mx-auto min-h-dvh max-w-content px-5 pt-[calc(var(--spacing-nav)+5rem)] pb-19">
+      <main className="isolate mx-auto min-h-dvh max-w-content px-5 pt-[calc(var(--spacing-nav)+5rem)] pb-19">
         <Outlet key={location.key} />
       </main>
       <ScrollRestoration />

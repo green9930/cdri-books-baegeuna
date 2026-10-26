@@ -11,6 +11,7 @@
   --color-textPrimary: #353c49;
   --color-textSecondary: #6d7582;
   --color-textSubtitle: #8d94a0;
+  --color-iconGray: #b1b8c0;
 
   --font-sans: "Noto Sans KR", sans-serif;
 
@@ -65,6 +66,7 @@
   --spacing-nav: 5rem; /* 80px */
 
   --shadow-dropdown: 0px 0px 4px 0px #00000040;
+  --shadow-popover: 0px 4px 14px 6px #97979726;
 }
 
 @layer base {

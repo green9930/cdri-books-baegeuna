@@ -40,10 +40,10 @@ export const Select = <T extends string>({
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex h-9 w-full cursor-pointer items-center justify-between border-b border-gray px-2 py-1 text-body2-bold text-textPrimary"
+        className="flex h-9 w-full cursor-pointer items-center justify-between border-b border-gray py-1 pr-1 pl-2 text-body2-bold text-textPrimary"
       >
         {selectedLabel}
-        <span className="flex size-5 items-center justify-center text-gray">
+        <span className="flex size-5 items-center justify-center text-iconGray">
           <IconChevron className="rotate-180" />
         </span>
       </button>

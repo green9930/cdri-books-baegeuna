@@ -11,15 +11,18 @@ interface SearchBarProps {
   keyword: string;
   setKeyword: (keyword: string) => void;
   handleSearch: (query: string) => void; // trim된 검색어 전달
+  isEmptyKeyword: boolean;
+  setIsEmptyKeyword: (isEmptyKeyword: boolean) => void;
 }
 
 export const SearchBar = ({
   keyword,
   setKeyword,
   handleSearch,
+  isEmptyKeyword,
+  setIsEmptyKeyword,
 }: SearchBarProps) => {
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
-  const [isEmptyKeyword, setIsEmptyKeyword] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
