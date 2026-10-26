@@ -34,10 +34,10 @@ export const BookDetail = ({
 
       <div className="flex min-w-0 flex-1 flex-col gap-4 pt-5 pr-4">
         <div className="flex min-w-0 items-center gap-4">
-          <p className="max-w-1/2 truncate text-title3 text-textPrimary">
+          <p className="max-w-2/3 truncate text-title3 text-textPrimary">
             {convertTextVal(book.title)}
           </p>
-          <p className="max-w-1/2 shrink-0 truncate text-caption-medium text-textSubtitle">
+          <p className="max-w-1/3 shrink-0 truncate text-caption-medium text-textSubtitle">
             {convertAuthors(book.authors)}
           </p>
         </div>

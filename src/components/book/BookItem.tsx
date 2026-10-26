@@ -73,11 +73,11 @@ export const BookItem = ({ book }: BookItemProps) => {
               <p className="truncate text-title3 text-textPrimary">
                 {convertTextVal(book.title)}
               </p>
-              <p className="max-w-1/2 shrink-0 truncate text-body2 text-textSecondary">
+              <p className="max-w-1/3 shrink-0 truncate text-body2 text-textSecondary">
                 {convertAuthors(book.authors)}
               </p>
             </div>
-            <p className="shrink-0 pr-16 text-title3 text-textPrimary">
+            <p className="shrink-0 pr-14 text-title3 text-textPrimary">
               {convertPrice(hasDiscount(book) ? book.sale_price : book.price)}
             </p>
             <div className="flex gap-2">
