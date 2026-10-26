@@ -29,10 +29,10 @@ export const BookDetail = ({
   const isDiscounted = hasDiscount(book);
 
   return (
-    <div className="flex gap-8 pt-6 pr-4 pb-10 pl-13.5">
+    <div className="flex gap-8 pt-6 pr-4 pb-10 pl-4 md:pl-13.5">
       <BookThumbnail book={book} size="lg" />
 
-      <div className="flex min-w-0 flex-1 flex-col gap-4 pt-5 pr-4">
+      <div className="flex min-w-0 flex-1 flex-col gap-4 md:pt-5 md:pr-4">
         <div className="flex min-w-0 items-center gap-4">
           <p className="max-w-2/3 truncate text-title3 text-textPrimary">
             {convertTextVal(book.title)}
@@ -49,7 +49,7 @@ export const BookDetail = ({
         </div>
       </div>
 
-      <div className="flex w-60 shrink-0 flex-col items-end justify-between">
+      <div className="flex shrink-0 flex-col items-end justify-between sm:w-50 md:w-60">
         <div className="w-28.75">
           <Button
             btnSize="lg"
@@ -64,7 +64,7 @@ export const BookDetail = ({
           </Button>
         </div>
 
-        <div className="flex w-full flex-col items-end gap-7">
+        <div className="flex w-full flex-col items-end gap-2 md:gap-7">
           <dl className="flex flex-col items-end gap-2">
             <div className="flex items-center gap-2">
               <dt className="text-small text-textSubtitle">원가</dt>

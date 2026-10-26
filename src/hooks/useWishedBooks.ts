@@ -10,7 +10,7 @@ export const useWishedBooks = () => {
   const sortedBooks = useMemo(
     () => Object.values(wishedBooks).sort((a, b) => b.wishedAt - a.wishedAt), // 최신 순 정렬
     [wishedBooks],
-  );
+  ); // 스크롤할 때마다 목록 재정렬 방지
 
   const handleNextPage = () => setVisibleCount((prev) => prev + PAGE_SIZE);
 

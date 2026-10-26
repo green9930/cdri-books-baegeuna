@@ -33,7 +33,7 @@ export const DetailSearchPopover = ({
   const isSearchable = query.trim().length >= SEARCH_INPUT_MIN_LENGTH;
 
   return (
-    <div className="absolute top-full left-1/2 z-30 mt-3.75 flex w-90 -translate-x-1/2 flex-col gap-4 rounded-lg bg-white px-6 py-9 shadow-popover">
+    <div className="absolute top-full -left-20 z-30 mt-3.75 flex w-80 -translate-x-1/2 flex-col gap-4 rounded-lg bg-white px-4 py-6 shadow-popover md:left-1/2 md:w-90 md:px-6 md:py-9">
       <button
         type="button"
         onClick={handleClose}

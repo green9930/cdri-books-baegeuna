@@ -67,20 +67,20 @@ export const BookItem = ({ book }: BookItemProps) => {
           inert={isOpen}
           className="col-start-1 row-start-1 self-start"
         >
-          <div className="flex items-center py-4 pr-4 pl-12">
+          <div className="flex items-center py-4 sm:pr-4 sm:pl-6 md:pl-12">
             <BookThumbnail book={book} size="sm" />
-            <div className="flex min-w-0 flex-1 items-center gap-4 pr-5.5 pl-12">
-              <p className="truncate text-title3 text-textPrimary">
+            <div className="flex min-w-0 flex-1 items-center gap-2 pr-3 pl-6 md:gap-4 md:pr-5.5 md:pl-12">
+              <p className="truncate text-body2-bold text-textPrimary md:text-title3">
                 {convertTextVal(book.title)}
               </p>
-              <p className="max-w-1/3 shrink-0 truncate text-body2 text-textSecondary">
+              <p className="max-w-1/3 shrink-0 truncate text-small text-textSecondary md:text-body2">
                 {convertAuthors(book.authors)}
               </p>
             </div>
-            <p className="shrink-0 pr-14 text-title3 text-textPrimary">
+            <p className="hidden shrink-0 pr-6 text-body2 text-textPrimary sm:block md:pr-14 md:text-title3">
               {convertPrice(hasDiscount(book) ? book.sale_price : book.price)}
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-col-reverse gap-1 md:flex-row md:gap-2">
               <div className="w-28.75">
                 <Button
                   btnSize="lg"

@@ -1,10 +1,10 @@
 export const BTN_SIZE_VAR = {
-  lg: "h-12",
-  md: "h-9",
+  lg: "h-9 md:h-12",
+  md: "h-7 md:h-9",
 } as const;
 
 export const BTN_TEXT_VAR = {
-  caption: "text-caption",
+  caption: "text-body2-bold md:text-caption",
   captionMedium: "text-caption-medium",
   body2: "text-body2",
 } as const;
