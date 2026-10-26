@@ -1,13 +1,13 @@
 import { imgBook } from "@/assets";
 
-import { NO_RESULTS_MESSAGE } from "@/constants/searchConstants";
+import { SEARCH_TEXTS } from "@/constants/searchConstants";
 
 interface EmptyStateProps {
   message?: string;
 }
 
 export const EmptyState = ({
-  message = NO_RESULTS_MESSAGE,
+  message = SEARCH_TEXTS.noResults,
 }: EmptyStateProps) => {
   return (
     <div className="flex flex-col items-center gap-6">

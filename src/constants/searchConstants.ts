@@ -1,7 +1,7 @@
 import type { TSearchTargetOption } from "@/types/bookTypes";
 
 export const PAGE_SIZE = 10;
-export const MAX_PAGE = 50;
+export const MAX_PAGE = 100;
 export const SEARCH_INPUT_MIN_LENGTH = 1;
 export const SEARCH_INPUT_MAX_LENGTH = 100;
 export const MAX_SEARCH_HISTORY = 8;
@@ -18,7 +18,8 @@ export const SEARCH_TARGET_OPTIONS: TSearchTargetOption[] = [
   { value: SEARCH_TARGET_OPTION_VALS.publisher, label: "출판사" },
 ];
 
-export const NO_RESULTS_MESSAGE = "검색된 결과가 없습니다.";
-export const END_OF_RESULTS_MESSAGE = "결과를 모두 불러왔습니다.";
-export const MAX_RESULTS_MESSAGE =
-  "검색 결과는 최대 500건까지 확인할 수 있습니다.";
+export const SEARCH_TEXTS = {
+  noResults: "검색된 결과가 없습니다.",
+  endOfResults: "결과를 모두 불러왔습니다.",
+  maxResults: `검색 결과는 최대 ${PAGE_SIZE * MAX_PAGE}건까지 확인할 수 있습니다.`,
+};

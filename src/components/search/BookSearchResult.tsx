@@ -3,11 +3,7 @@ import { EmptyState } from "@/components/elements/EmptyState";
 import { Spinner } from "@/components/elements/Spinner";
 import { useBookSearch } from "@/hooks/useBookSearch";
 import { useErrorModalStore } from "@/state/store/errorModalStore";
-import {
-  END_OF_RESULTS_MESSAGE,
-  MAX_PAGE,
-  MAX_RESULTS_MESSAGE,
-} from "@/constants/searchConstants";
+import { MAX_PAGE, SEARCH_TEXTS } from "@/constants/searchConstants";
 import type { TBookSearchParams } from "@/types/bookTypes";
 
 interface BookSearchResultProps {
@@ -41,7 +37,7 @@ export const BookSearchResult = ({ params }: BookSearchResultProps) => {
         도서 검색 결과 총 <span className="text-primary">{totalCount}</span>건
       </p>
       {books.length === 0 ? (
-        <div className="py-20">
+        <div className="py-21">
           <EmptyState />
         </div>
       ) : (
@@ -52,7 +48,7 @@ export const BookSearchResult = ({ params }: BookSearchResultProps) => {
           handleNextPage={fetchNextPage}
           isNextPagePaused={isErrorModalOpen}
           endMessage={
-            isMaxReached ? MAX_RESULTS_MESSAGE : END_OF_RESULTS_MESSAGE
+            isMaxReached ? SEARCH_TEXTS.maxResults : SEARCH_TEXTS.endOfResults
           }
         />
       )}
