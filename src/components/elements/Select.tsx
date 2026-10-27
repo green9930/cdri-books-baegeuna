@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+
+import { useDismiss } from "@/hooks/useDismiss";
 import { IconChevron } from "@/assets";
 
 interface SelectProps<T extends string> {
@@ -18,17 +20,12 @@ export const Select = <T extends string>({
   const selectedLabel = options.find((option) => option.value === value)?.label;
   const restOptions = options.filter((option) => option.value !== value);
 
-  /* 외부 클릭 시 options 비활성화 */
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (!selectRef.current?.contains(e.target as Node)) setIsOpen(false);
-    };
-    document.addEventListener("mousedown", handleOutsideClick);
-
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, [isOpen]);
+  /* options: Esc or 외부 클릭 시 비활성화 */
+  useDismiss({
+    enabled: isOpen,
+    targetRef: selectRef,
+    handleDismiss: () => setIsOpen(false),
+  });
 
   const handleSelect = (target: T) => {
     handleChange(target);

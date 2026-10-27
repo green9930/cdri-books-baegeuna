@@ -1,3 +1,4 @@
+import { ARIA_LABELS } from "@/constants/commonConstants";
 import { IconClose } from "@/assets";
 
 interface SearchHistoryListProps {
@@ -30,6 +31,7 @@ export const SearchHistoryList = ({
           </button>
           <button
             type="button"
+            aria-label={ARIA_LABELS.deleteHistory(keyword)}
             onClick={() => handleDelete(keyword)}
             className="size-6 shrink-0 cursor-pointer text-black"
           >

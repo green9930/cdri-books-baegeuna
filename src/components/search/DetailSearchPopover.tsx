@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { IconClose } from "@/assets";
 
 import { Button } from "@/components/elements/Button";
 import { Select } from "@/components/elements/Select";
 import { TextInput } from "@/components/elements/TextInput";
-import { BTN_TEXTS, PLACEHOLDER_TEXTS } from "@/constants/commonConstants";
 import {
-  SEARCH_INPUT_MAX_LENGTH,
-  SEARCH_INPUT_MIN_LENGTH,
+  BOOK_SEARCH_RULES,
   SEARCH_TARGET_OPTION_VALS,
   SEARCH_TARGET_OPTIONS,
-} from "@/constants/searchConstants";
+} from "@/constants/bookConstants";
+import {
+  ARIA_LABELS,
+  BTN_TEXTS,
+  PLACEHOLDER_TEXTS,
+} from "@/constants/commonConstants";
 import type { TSearchTarget } from "@/types/bookTypes";
+import { IconClose } from "@/assets";
 
 interface DetailSearchPopoverProps {
   handleClose: () => void;
@@ -30,12 +33,14 @@ export const DetailSearchPopover = ({
   );
   const [query, setQuery] = useState("");
 
-  const isSearchable = query.trim().length >= SEARCH_INPUT_MIN_LENGTH;
+  const isSearchable =
+    query.trim().length >= BOOK_SEARCH_RULES.minSearchInputLength;
 
   return (
     <div className="absolute top-full -left-20 z-30 mt-3.75 flex w-80 -translate-x-1/2 flex-col gap-4 rounded-lg bg-white px-4 py-6 shadow-popover md:left-1/2 md:w-90 md:px-6 md:py-9">
       <button
         type="button"
+        aria-label={ARIA_LABELS.closeDetailSearch}
         onClick={handleClose}
         className="absolute top-2 right-2 cursor-pointer text-iconGray"
       >
@@ -51,7 +56,8 @@ export const DetailSearchPopover = ({
           value={query}
           setValue={setQuery}
           placeholder={PLACEHOLDER_TEXTS.detailSearch}
-          maxLength={SEARCH_INPUT_MAX_LENGTH}
+          ariaLabel={ARIA_LABELS.detailSearchInput}
+          maxLength={BOOK_SEARCH_RULES.maxSearchInputLength}
         />
       </div>
       <Button

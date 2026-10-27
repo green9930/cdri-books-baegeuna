@@ -15,7 +15,7 @@ export const Navigation = () => {
         <nav className="h-full md:absolute md:left-1/2 md:-translate-x-1/2">
           <ul className="flex h-full items-center gap-2 md:gap-14">
             {NAV_MENUS.map(({ label, path }) => (
-              <li key={path} className="">
+              <li key={path}>
                 <NavLink
                   to={path}
                   end={path === PATH_LIST.search}

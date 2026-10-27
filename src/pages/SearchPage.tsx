@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 
 import { BookSearchResult } from "@/components/search/BookSearchResult";
 import { DetailSearch } from "@/components/search/DetailSearch";
 import { SearchBar } from "@/components/search/SearchBar";
+import { useResetStaleBookSearch } from "@/hooks/useBookSearch";
 import { useSearchHistoryStore } from "@/state/store/searchHistoryStore";
-import { QUERY_KEYS, QUERY_STALE_TIME } from "@/constants/commonConstants";
 import { NAV_LABEL_LIST, SERVICE_NAME } from "@/constants/navConstants";
 import type { TBookSearchParams, TSearchTarget } from "@/types/bookTypes";
 
@@ -15,18 +14,11 @@ export const SearchPage = () => {
   const [isEmptyKeyword, setIsEmptyKeyword] = useState(false); // 도서 검색 필드 공백 Enter 안내 문구
   const [isDetailOpen, setIsDetailOpen] = useState(false); // 상세 검색 팝업
 
-  const queryClient = useQueryClient();
+  const resetStaleBookSearch = useResetStaleBookSearch();
   const addHistory = useSearchHistoryStore((state) => state.addHistory);
 
   const handleSearchRequest = (nextParams: TBookSearchParams) => {
-    const queryKey = [QUERY_KEYS.books, nextParams];
-    const cachedQuery = queryClient
-      .getQueryCache()
-      .find({ queryKey, exact: true });
-    /* 캐시 데이터 유효성 체크 */
-    if (cachedQuery?.isStaleByTime(QUERY_STALE_TIME))
-      queryClient.resetQueries({ queryKey, exact: true });
-
+    resetStaleBookSearch(nextParams); // 캐시 데이터 유효성 체크
     setParams(nextParams);
     window.scrollTo({ top: 0 });
   };

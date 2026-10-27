@@ -1,9 +1,11 @@
-import { BookList } from "@/components/book/BookList";
-import { EmptyState } from "@/components/elements/EmptyState";
+import { BookResult } from "@/components/book/BookResult";
 import { Spinner } from "@/components/elements/Spinner";
 import { useBookSearch } from "@/hooks/useBookSearch";
 import { useErrorModalStore } from "@/state/store/errorModalStore";
-import { MAX_PAGE, SEARCH_TEXTS } from "@/constants/searchConstants";
+import {
+  BOOK_SEARCH_RULES,
+  BOOK_SEARCH_TEXTS,
+} from "@/constants/bookConstants";
 import type { TBookSearchParams } from "@/types/bookTypes";
 
 interface BookSearchResultProps {
@@ -29,29 +31,26 @@ export const BookSearchResult = ({ params }: BookSearchResultProps) => {
   const totalCount = data?.pages[0].meta.total_count ?? 0;
   const lastPageParam = data?.pageParams.at(-1);
   /* 최대 페이지까지 불러왔는데 총 검색 결과가 더 많을 경우 */
-  const isMaxReached = lastPageParam === MAX_PAGE && totalCount > books.length;
+  const isMaxReached =
+    lastPageParam === BOOK_SEARCH_RULES.maxPage && totalCount > books.length;
 
   return (
-    <div className="flex flex-col gap-9 pt-2">
-      <p className="text-caption-medium text-textPrimary">
-        도서 검색 결과 총 <span className="text-primary">{totalCount}</span>건
-      </p>
-      {books.length === 0 ? (
-        <div className="py-21">
-          <EmptyState />
-        </div>
-      ) : (
-        <BookList
-          books={books}
-          hasNextPage={hasNextPage}
-          isFetchingNextPage={isFetchingNextPage}
-          handleNextPage={fetchNextPage}
-          isNextPagePaused={isErrorModalOpen}
-          endMessage={
-            isMaxReached ? SEARCH_TEXTS.maxResults : SEARCH_TEXTS.endOfResults
-          }
-        />
-      )}
+    <div className="pt-2">
+      <BookResult
+        countLabel={BOOK_SEARCH_TEXTS.resultCountLabel}
+        totalCount={totalCount}
+        emptyMessage={BOOK_SEARCH_TEXTS.noResults}
+        books={books}
+        hasNextPage={hasNextPage}
+        isFetchingNextPage={isFetchingNextPage}
+        handleNextPage={fetchNextPage}
+        isNextPagePaused={isErrorModalOpen}
+        endMessage={
+          isMaxReached
+            ? BOOK_SEARCH_TEXTS.maxResults
+            : BOOK_SEARCH_TEXTS.endOfResults
+        }
+      />
     </div>
   );
 };

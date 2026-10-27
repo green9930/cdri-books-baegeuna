@@ -69,14 +69,5 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
-  {
-    files: ["**/*.{js,jsx,ts,tsx}"],
-    rules: {
-      "react-hooks/exhaustive-deps": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "prefer-const": "off",
-    },
-  },
   ...conventionRules,
 ]);

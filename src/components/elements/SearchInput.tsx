@@ -5,8 +5,8 @@ interface SearchInputProps {
   setValue: (value: string) => void;
   placeholder: string;
   maxLength: number;
+  ariaLabel?: string;
   handleFocus?: () => void;
-  handleBlur?: () => void;
   handleEnterKeyDown?: () => void;
 }
 
@@ -15,8 +15,8 @@ export const SearchInput = ({
   setValue,
   placeholder,
   maxLength,
+  ariaLabel,
   handleFocus,
-  handleBlur,
   handleEnterKeyDown,
 }: SearchInputProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -33,9 +33,9 @@ export const SearchInput = ({
         value={value}
         placeholder={placeholder}
         maxLength={maxLength}
+        aria-label={ariaLabel}
         onChange={(e) => setValue(e.target.value)}
         onFocus={handleFocus}
-        onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         className="h-full w-full bg-transparent text-caption text-textPrimary placeholder:text-textSubtitle"
       />

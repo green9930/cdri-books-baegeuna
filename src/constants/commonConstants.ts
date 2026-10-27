@@ -1,5 +1,7 @@
+import type { TBookSearchParams } from "@/types/bookTypes";
+
 export const QUERY_KEYS = {
-  books: "books",
+  books: (params: TBookSearchParams | null) => ["books", params] as const,
 };
 
 export const QUERY_STALE_TIME = 5 * 60 * 1000; // caching - 5min
@@ -10,6 +12,15 @@ export const BTN_TEXTS = {
   detailSearch: "상세검색",
   search: "검색하기",
   close: "닫기",
+};
+
+export const ARIA_LABELS = {
+  wish: "찜하기",
+  closeDetailSearch: "상세 검색 닫기",
+  deleteHistory: (keyword: string) => `${keyword} 검색 기록 삭제`,
+  searchInput: "도서 검색어",
+  detailSearchInput: "상세 검색어",
+  loading: "불러오는 중",
 };
 
 export const PLACEHOLDER_TEXTS = {
@@ -35,3 +46,8 @@ export const ERROR_MODAL_TEXTS = {
   tooManyRequests: "요청이 많아 잠시 후 다시 시도해 주세요.",
   serverError: "요청 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",
 };
+
+export const LOCALSTORAGE_KEYS = {
+  wishStore: "certicos-books.wish",
+  searchHistoryStore: "certicos-books.search-history",
+} as const;

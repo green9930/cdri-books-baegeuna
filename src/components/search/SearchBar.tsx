@@ -4,8 +4,12 @@ import { SearchInput } from "@/components/elements/SearchInput";
 import { SearchHistoryList } from "@/components/search/SearchHistoryList";
 import { useDismiss } from "@/hooks/useDismiss";
 import { useSearchHistoryStore } from "@/state/store/searchHistoryStore";
-import { PLACEHOLDER_TEXTS, SUBTEXTS } from "@/constants/commonConstants";
-import { SEARCH_INPUT_MAX_LENGTH } from "@/constants/searchConstants";
+import { BOOK_SEARCH_RULES } from "@/constants/bookConstants";
+import {
+  ARIA_LABELS,
+  PLACEHOLDER_TEXTS,
+  SUBTEXTS,
+} from "@/constants/commonConstants";
 
 interface SearchBarProps {
   keyword: string;
@@ -81,13 +85,17 @@ export const SearchBar = ({
           value={keyword}
           setValue={handleChange}
           placeholder={PLACEHOLDER_TEXTS.searchBar}
-          maxLength={SEARCH_INPUT_MAX_LENGTH}
+          ariaLabel={ARIA_LABELS.searchInput}
+          maxLength={BOOK_SEARCH_RULES.maxSearchInputLength}
           handleFocus={handleFocus}
           handleEnterKeyDown={handleEnter}
         />
       </div>
       {isEmptyKeyword && (
-        <p className="absolute -bottom-6 left-0 pl-12.5 text-caption-medium text-red">
+        <p
+          role="alert"
+          className="absolute -bottom-6 left-0 pl-12.5 text-caption-medium text-red"
+        >
           {SUBTEXTS.emptySearch}
         </p>
       )}

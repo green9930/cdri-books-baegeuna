@@ -1,4 +1,4 @@
-import { WishedBookResult } from "@/components/book/WishedBookResult";
+import { WishedBookResult } from "@/components/wishlist/WishedBookResult";
 import { NAV_LABEL_LIST, SERVICE_NAME } from "@/constants/navConstants";
 
 export const WishlistPage = () => {

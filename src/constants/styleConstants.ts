@@ -5,7 +5,6 @@ export const BTN_SIZE_VAR = {
 
 export const BTN_TEXT_VAR = {
   caption: "text-body2-bold md:text-caption",
-  captionMedium: "text-caption-medium",
   body2: "text-body2",
 } as const;
 

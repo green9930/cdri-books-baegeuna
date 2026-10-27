@@ -14,6 +14,7 @@ interface ButtonProps {
   btnColor: TBtnColor;
   btnType?: "button" | "submit";
   disabled?: boolean;
+  ariaExpanded?: boolean;
   handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children: React.ReactNode;
 }
@@ -24,6 +25,7 @@ export const Button = ({
   btnColor,
   btnType = "button",
   disabled = false,
+  ariaExpanded,
   handleClick,
   children,
 }: ButtonProps) => {
@@ -31,6 +33,7 @@ export const Button = ({
     <button
       type={btnType}
       disabled={disabled}
+      aria-expanded={ariaExpanded}
       onClick={handleClick}
       className={`${BTN_BASE_STYLE} ${BTN_SIZE_VAR[btnSize]} ${BTN_TEXT_VAR[btnText]} ${
         disabled

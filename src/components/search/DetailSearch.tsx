@@ -32,6 +32,7 @@ export const DetailSearch = ({
         btnSize="md"
         btnText="body2"
         btnColor="subtitleOutline"
+        ariaExpanded={isOpen}
         handleClick={() => setIsOpen(!isOpen)}
       >
         {BTN_TEXTS.detailSearch}

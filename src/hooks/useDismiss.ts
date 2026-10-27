@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useEffectEvent } from "react";
 
 interface UseDismissProps {
   enabled: boolean;
@@ -12,14 +12,17 @@ export const useDismiss = ({
   targetRef,
   handleDismiss,
 }: UseDismissProps) => {
+  /* 렌더링 시 listener 재등록 방지: 최신 handleDismiss를 참조하나 useeffect deps 제외 */
+  const handleDismissEvent = useEffectEvent(handleDismiss);
+
   useEffect(() => {
     if (!enabled) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleDismiss();
+      if (e.key === "Escape") handleDismissEvent();
     };
     const handleMouseDown = (e: MouseEvent) => {
-      if (!targetRef.current?.contains(e.target as Node)) handleDismiss();
+      if (!targetRef.current?.contains(e.target as Node)) handleDismissEvent();
     };
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousedown", handleMouseDown);
@@ -28,5 +31,5 @@ export const useDismiss = ({
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleMouseDown);
     };
-  }, [enabled, targetRef, handleDismiss]);
+  }, [enabled, targetRef]);
 };

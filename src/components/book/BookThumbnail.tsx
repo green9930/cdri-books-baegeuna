@@ -5,9 +5,9 @@ import { ImagePlaceholder } from "@/components/elements/ImagePlaceholder";
 import type { TBookData } from "@/types/bookTypes";
 
 const THUMBNAIL_SIZE_VAR = {
-  sm: { container: "h-[68px] w-12", icon: "size-4", position: "top-0 right-0" },
+  sm: { container: "h-17 w-12", icon: "size-4", position: "top-0 right-0" },
   lg: {
-    container: "h-28 sm:h-40 md:h-70 w-21 sm:w-30 md:w-[210px]",
+    container: "h-28 sm:h-40 md:h-70 w-21 sm:w-30 md:w-52.5",
     icon: "size-6",
     position: "top-1 right-2 md:top-2 md:right-2",
   },

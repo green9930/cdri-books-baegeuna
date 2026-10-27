@@ -1,15 +1,13 @@
-import { IconChevron } from "@/assets";
-
 import { BookThumbnail } from "@/components/book/BookThumbnail";
-import { Button } from "@/components/elements/Button";
+import { DetailToggleButton } from "@/components/book/DetailToggleButton";
+import { PurchaseButton } from "@/components/book/PurchaseButton";
 import {
   convertAuthors,
   convertPrice,
   convertTextVal,
   hasDiscount,
 } from "@/utils/bookUtils";
-import { BTN_TEXTS } from "@/constants/commonConstants";
-import { CHEVRON_TRANSITION } from "@/constants/styleConstants";
+import { BOOK_DETAIL_TEXTS } from "@/constants/bookConstants";
 import type { TBookData } from "@/types/bookTypes";
 
 interface BookDetailProps {
@@ -33,16 +31,18 @@ export const BookDetail = ({
       <BookThumbnail book={book} size="lg" />
 
       <div className="flex min-w-0 flex-1 flex-col gap-4 md:pt-5 md:pr-4">
-        <div className="flex min-w-0 items-center gap-4">
-          <p className="max-w-2/3 truncate text-title3 text-textPrimary">
+        <div className="flex min-w-0 flex-col gap-1 md:flex-row md:items-center md:gap-4">
+          <p className="truncate text-title3 text-textPrimary md:max-w-2/3">
             {convertTextVal(book.title)}
           </p>
-          <p className="max-w-1/3 shrink-0 truncate text-caption-medium text-textSubtitle">
+          <p className="shrink-0 truncate text-caption-medium text-textSubtitle md:max-w-1/3">
             {convertAuthors(book.authors)}
           </p>
         </div>
         <div className="flex flex-col gap-3">
-          <p className="text-body2-bold text-textPrimary">책 소개</p>
+          <p className="text-body2-bold text-textPrimary">
+            {BOOK_DETAIL_TEXTS.contents}
+          </p>
           <p className="text-small leading-4 text-textPrimary">
             {convertTextVal(book.contents)}
           </p>
@@ -51,23 +51,15 @@ export const BookDetail = ({
 
       <div className="flex shrink-0 flex-col items-end justify-between sm:w-50 md:w-60">
         <div className="w-28.75">
-          <Button
-            btnSize="lg"
-            btnText="caption"
-            btnColor="lightGrayFilled"
-            handleClick={handleToggle}
-          >
-            {BTN_TEXTS.detail}
-            <IconChevron
-              className={`${CHEVRON_TRANSITION} ${isOpen ? "" : "rotate-180"}`}
-            />
-          </Button>
+          <DetailToggleButton isOpen={isOpen} handleToggle={handleToggle} />
         </div>
 
         <div className="flex w-full flex-col items-end gap-2 md:gap-7">
           <dl className="flex flex-col items-end gap-2">
             <div className="flex items-center gap-2">
-              <dt className="text-small text-textSubtitle">원가</dt>
+              <dt className="text-small text-textSubtitle">
+                {BOOK_DETAIL_TEXTS.price}
+              </dt>
               <dd
                 className={`text-title3 text-textPrimary ${isDiscounted ? "font-light line-through" : "font-medium"}`}
               >
@@ -76,21 +68,16 @@ export const BookDetail = ({
             </div>
             {isDiscounted && (
               <div className="flex items-center gap-2">
-                <dt className="text-small text-textSubtitle">할인가</dt>
+                <dt className="text-small text-textSubtitle">
+                  {BOOK_DETAIL_TEXTS.salePrice}
+                </dt>
                 <dd className="text-title3 text-textPrimary">
                   {convertPrice(book.sale_price)}
                 </dd>
               </div>
             )}
           </dl>
-          <Button
-            btnSize="lg"
-            btnText="caption"
-            btnColor="primaryFilled"
-            handleClick={handlePurchase}
-          >
-            {BTN_TEXTS.purchase}
-          </Button>
+          <PurchaseButton handlePurchase={handlePurchase} />
         </div>
       </div>
     </div>

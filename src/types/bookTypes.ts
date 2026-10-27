@@ -1,4 +1,4 @@
-import type { SEARCH_TARGET_OPTION_VALS } from "@/constants/searchConstants";
+import type { SEARCH_TARGET_OPTION_VALS } from "@/constants/bookConstants";
 
 export type TSearchTarget = keyof typeof SEARCH_TARGET_OPTION_VALS;
 

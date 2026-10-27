@@ -1,8 +1,8 @@
-import { IconLikeEmpty, IconLikeFilled } from "@/assets";
-
 import { useWishStore } from "@/state/store/wishStore";
 import { handleBookKey } from "@/utils/bookUtils";
+import { ARIA_LABELS } from "@/constants/commonConstants";
 import type { TBookData } from "@/types/bookTypes";
+import { IconLikeEmpty, IconLikeFilled } from "@/assets";
 
 interface WishButtonProps {
   book: TBookData;
@@ -17,6 +17,8 @@ export const WishButton = ({ book, iconSize }: WishButtonProps) => {
   return (
     <button
       type="button"
+      aria-label={ARIA_LABELS.wish}
+      aria-pressed={isWished}
       onClick={() => toggleWish(book)}
       className="cursor-pointer"
     >

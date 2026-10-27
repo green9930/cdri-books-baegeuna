@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { handleBookKey } from "@/utils/bookUtils";
-import { LOCALSTORAGE_KEYS } from "@/constants/storageConstants";
+import { LOCALSTORAGE_KEYS } from "@/constants/commonConstants";
 import type { TBookData, TWishedBook } from "@/types/bookTypes";
 
 /* key: handleBookKey(book). 찜 여부를 key로 바로 조회, 정렬은 wishedAt 기준 */
